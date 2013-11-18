@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SA-Android</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="save">Speichern</string>
+    <string name="firstname">Vorname</string>
+    <string name="lastname">Nachname</string>
+    <string name="birthday">Geburtstag</string>
+    <string name="gender">Geschlecht</string>
+    <string name="faculty">Fakultät</string>
+
+</resources>

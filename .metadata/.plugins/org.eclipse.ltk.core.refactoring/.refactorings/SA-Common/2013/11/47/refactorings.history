@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;RMIClient.java&apos; to &apos;SA-Client/src/de.hswt.bp4553.swa.projekt.rmi&apos;&#x0A;- Original project: &apos;SA-Common&apos;&#x0A;- Destination element: &apos;SA-Client/src/de.hswt.bp4553.swa.projekt.rmi&apos;&#x0A;- Original element: &apos;de.hswt.bp4553.swa.projekt.rmi.RMIClient.java&apos;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="=SA-Client/src&lt;de.hswt.bp4553.swa.projekt.rmi" element1="/src&lt;de.hswt.bp4553.swa.projekt.rmi{RMIClient.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1384789737757" units="1" version="1.0"/>
+</session>
