@@ -1,4 +1,3 @@
 INDEX VERSION 1.126+/home/bp4553/SA-Projekt/.metadata/.plugins/org.eclipse.jdt.core
 2975704788.index
 249299827.index
-745830263.index
