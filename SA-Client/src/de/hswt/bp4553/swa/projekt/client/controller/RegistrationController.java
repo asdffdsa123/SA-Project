@@ -17,13 +17,14 @@ import de.hswt.bp4553.swa.projekt.rmi.RMIClient;
 import de.hswt.bp4553.swa.projekt.socket.ServerConfig;
 import de.hswt.bp4553.swa.projekt.socket.SocketClient;
 
-public class RegistrationController {
+public class RegistrationController implements RegistrationHandler{
 	
 	private RegistrationView view;
 	
-	public RegistrationController(RegistrationView view) {
+	public RegistrationController() {
 		super();
-		this.view = view;
+		view = new RegistrationView(this);
+		view.setVisible(true);
 	}
 	
 	private void registerWithSockets(Registration reg){
@@ -108,5 +109,15 @@ public class RegistrationController {
             }
         }).start();
     }
+
+	@Override
+	public void add(Registration reg) {
+		addRegistrationPressed(reg, view.getSelectedConnectionType());
+	}
+
+	@Override
+	public void groupAdd(File file) {
+		addGroupPressed(file, view.getSelectedConnectionType());
+	}
 
 }

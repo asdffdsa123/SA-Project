@@ -1,0 +1,5 @@
+package de.hswt.bp4553.swa.projekt.client.controller;
+
+public interface GroupAddHandler {
+
+}

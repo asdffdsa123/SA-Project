@@ -23,6 +23,7 @@ import javax.swing.SwingUtilities;
 
 import de.hswt.bp4553.swa.projekt.client.controller.ConnectionType;
 import de.hswt.bp4553.swa.projekt.client.controller.RegistrationController;
+import de.hswt.bp4553.swa.projekt.client.controller.RegistrationHandler;
 import de.hswt.bp4553.swa.projekt.model.Fakulty;
 import de.hswt.bp4553.swa.projekt.model.Gender;
 import de.hswt.bp4553.swa.projekt.model.Registration;
@@ -42,18 +43,21 @@ public class RegistrationView extends JFrame{
 	private JList<String> regisList;
 	private DefaultListModel<String> regisListModel;
 	
-	private RegistrationController logic;
+	private JButton addButton;
+	private JButton groupAddButton;
 	
 	private BusyDialog busyDialog;
 	
-	public RegistrationView(){
+	private RegistrationHandler handler;
+	
+	public RegistrationView(RegistrationHandler handler){
 		this.setLayout(new BorderLayout());
 		this.getContentPane().add(regisList(), BorderLayout.CENTER);
 		this.getContentPane().add(rightPanel(), BorderLayout.EAST);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.pack();
 		this.setSize(400, 400);
-		logic = new RegistrationController(this);
+		this.handler = handler;
 	}
 	
 	private JPanel rightPanel(){
@@ -87,36 +91,38 @@ public class RegistrationView extends JFrame{
 	}
 	
 	private JButton addBtn(){
-		JButton button = new JButton("Hinzufügen");
-		button.addActionListener(new ActionListener() {
+		addButton = new JButton("Hinzufügen");
+		addButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					Registration reg = parseRegistration();
-					logic.addRegistrationPressed(reg, ConnectionType.values()[conTypeBox.getSelectedIndex()]);
+					handler.add(parseRegistration());
 				} catch (ParseException e) {
 					JOptionPane.showMessageDialog(RegistrationView.this, String.format("Fehlerhafte Eingabe: %s", e.getMessage()));
 				}
-				
 			}
 		});
-		return button;
+		return addButton;
 	}
 	
 	private JButton groupAddBtn(){
-	    JButton button = new JButton("Gruppe hinzufügen");
-	       button.addActionListener(new ActionListener() {
-	            
-	            @Override
-	            public void actionPerformed(ActionEvent arg0) {
-	                JFileChooser chooser = new JFileChooser();
-	                if(chooser.showOpenDialog(RegistrationView.this) == JFileChooser.APPROVE_OPTION){
-	                    logic.addGroupPressed(chooser.getSelectedFile(), ConnectionType.values()[conTypeBox.getSelectedIndex()]);
-	                }
-	            }
-	        });
-	        return button;
+	    groupAddButton = new JButton("Gruppe hinzufügen");
+		groupAddButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+                JFileChooser chooser = new JFileChooser();
+                if(chooser.showOpenDialog(RegistrationView.this) == JFileChooser.APPROVE_OPTION){
+                    handler.groupAdd(chooser.getSelectedFile());
+                }
+			}
+		});
+	    return groupAddButton;
+	}
+
+	public ConnectionType getSelectedConnectionType(){
+		return ConnectionType.values()[conTypeBox.getSelectedIndex()];
 	}
 	
 	private JTextField nameField(){
