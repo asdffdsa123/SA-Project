@@ -1,0 +1,11 @@
+package de.hswt.bp4553.swa.projekt.client.model;
+
+import java.util.Collection;
+
+import de.hswt.bp4553.swa.projekt.model.Registration;
+
+public class RegistrationModel {
+	
+	private Collection<Registration> registration;
+
+}
