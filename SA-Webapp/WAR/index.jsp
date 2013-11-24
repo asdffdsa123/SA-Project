@@ -3,6 +3,7 @@
 		<%@ page import="de.hswt.bp4553.swa.projekt.model.*" %>
 		<%@ page import="de.hswt.bp4553.swa.projekt.socket.*" %>
 		<%@ page import="java.util.*" %>
+		<%@ page import="java.text.*" %>
 		<meta charset="utf-8">
 		<title>Wettkampf Registrierung</title>
 	</head>
@@ -28,7 +29,10 @@
 				if("registration".equals(request.getParameter("inputtype"))){
 					String firstname = request.getParameter("name");
 					String lastname = request.getParameter("lastname");
-					Registration toInsert = new Registration(firstname, lastname, new Date(), Fakulty.BB, Gender.Mann);
+					Date birthday = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthday"));
+					Fakulty fakulty = Fakulty.valueOf(request.getParameter("fakulty"));
+					Gender gender = Gender.valueOf(request.getParameter("gender"));
+					Registration toInsert = new Registration(firstname, lastname, birthday, fakulty, gender);
 					SocketClient client = new SocketClient(ServerConfig.getInstance());
 					Collection<Registration> regs = client.register(toInsert);
 					out.write("<table border='0'>");
