@@ -1,4 +1,4 @@
-address: bb-x-xterm.hswt.de
+address: localhost
 socket-port: 55487
 rmi-port: 25544
 rmi-service-name: registrationService

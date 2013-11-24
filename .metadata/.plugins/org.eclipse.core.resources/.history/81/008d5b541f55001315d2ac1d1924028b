@@ -36,7 +36,6 @@ public class SocketServer extends Thread{
 	
 	@Override
 	public void run(){
-		log.log(Level.INFO, "Socket Server started");
 		try(ServerSocket ss = new ServerSocket(ServerConfig.getInstance().getSocketPort())){
 			while(true){
 				try {
@@ -47,7 +46,6 @@ public class SocketServer extends Thread{
 						public void run() {
 							try {
 								handleClient(socket);
-								log.info("Client sucessfully handled");
 							} catch (Exception e) {
 								log.log(Level.SEVERE, Throwables.getStackTraceAsString(e));
 							}
