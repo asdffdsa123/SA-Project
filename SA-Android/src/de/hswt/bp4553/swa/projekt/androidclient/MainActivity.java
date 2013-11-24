@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -29,10 +30,18 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Spinner genderSpinner = (Spinner) findViewById(R.id.gender_spinner);
-		for(Gender g : Gender.values()){
-			
-		}
+		genderSpinner.setAdapter(createAdapter(Gender.values()));
+		Spinner fakultySpinner = (Spinner) findViewById(R.id.faculty_spinner);
+		fakultySpinner.setAdapter(createAdapter(Fakulty.values()));
 		client = new SocketClient(ServerConfig.getInstance());
+	}
+	
+	private ArrayAdapter<String> createAdapter(Object[] objs){
+		String[] strs = new String[objs.length];
+		for(int i = 0; i < strs.length; i++){
+			strs[i] = objs[i].toString();
+		}
+		return new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, strs);
 	}
 
 	@Override
