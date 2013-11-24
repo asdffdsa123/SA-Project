@@ -16,13 +16,21 @@ public class ServerConfig {
 	private final Properties prop = new Properties();
 	
 	private ServerConfig(){
-		try(InputStream in = ServerConfig.class.getResourceAsStream("server.config")){
+		InputStream in = null;
+		try{
+			in = ServerConfig.class.getResourceAsStream("server.config");
 			if(in == null){
 				throw new FileNotFoundException();
 			}
 			prop.load(in);
 		} catch (IOException e) {
 			log.log(Level.WARNING, "Could not read config file", e);
+		}finally{
+			if(in != null){
+				try {
+					in.close();
+				} catch (IOException e) {}
+			}
 		}
 	}
 	
