@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+		<title>Wettkampf Registrierung</title>
+	</head>
+	<body>
+		<form>
+			<input type = "text" class = "form-control"/>
+			<input type = "text" class = "form-control"/>
+			<input type = "text"/>
+			<input type = "submit" value = "Hinzufuegen"/>
+		</form>
+	</body>
+	
+</html>

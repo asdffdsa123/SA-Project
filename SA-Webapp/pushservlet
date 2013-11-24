@@ -1,0 +1,1 @@
+scp -r WAR/* bp4553@bb-x-servlet.hswt.de:/var/lib/tomcat5.5/webapps/bp4553/
