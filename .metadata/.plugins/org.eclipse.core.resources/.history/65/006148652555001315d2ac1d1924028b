@@ -1,0 +1,13 @@
+package de.hswt.bp4553.swa.projekt.androidclient;
+
+import de.hswt.bp4553.swa.projekt.model.Registration;
+
+public class SaveTask {
+	
+	private final Registration reg;
+	
+	public SaveTask(Registration reg){
+		this.reg = reg;
+	}
+
+}
