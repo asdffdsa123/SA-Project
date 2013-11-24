@@ -28,10 +28,10 @@
 				if("registration".equals(request.getParameter("inputtype"))){
 					String firstname = request.getParameter("name");
 					String lastname = request.getParameter("lastname");
-					Registration toInsert = new Registration(firstname, lastname, new Date(), Fakulty.BB, Gender.Mann);
+					Registration reg = new Registration(firstname, lastname, new Date(), Fakulty.BB, Gender.Mann);
 					SocketClient client = new SocketClient(ServerConfig.getInstance());
-					Collection<Registration> regs = client.register(toInsert);
-					out.write("<table border='0'>");
+					Collection<Registration> regs = client.register(reg);
+					out.write("<table border="0">");
 					for(Registration reg : regs){
 						out.write("<tr>");
 						out.write("<td>");

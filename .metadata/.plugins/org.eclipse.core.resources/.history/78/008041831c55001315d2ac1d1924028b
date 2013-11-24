@@ -20,10 +20,6 @@ public class SocketClient {
 		this.config = config;
 	}
 	
-	public SocketClient(){
-		this(ServerConfig.getInstance());
-	}
-	
 	@SuppressWarnings("unchecked")
 	public Collection<Registration> register(Registration reg) throws IOException{
 		try(Socket socket = openSocket();
