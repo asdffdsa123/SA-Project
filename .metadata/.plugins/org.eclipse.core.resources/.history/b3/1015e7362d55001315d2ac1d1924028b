@@ -55,10 +55,9 @@
 					}
 					out.write("</table>");
 				}else if("groupregistration".equals(inputType)){
-					
+					out.write(request.getParameter("file"));
 				}
 			%>
-			<br/>
 	</body>
 	
 </html>

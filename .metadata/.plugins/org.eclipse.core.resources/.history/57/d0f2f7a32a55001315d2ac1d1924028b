@@ -28,7 +28,7 @@
 			</form>	
 		</div>
 		<div style = 'float:left;'>
-			<form method="post" enctype="multipart/form-data">  
+			<form>
 				<input type = "file" name = "file"> Datei </input> <br/>
 				<input type = "hidden" name = "inputtype" value = "groupregistration"/>
 				<button type = "submit">Gruppen Datei hochladen</button>
@@ -55,10 +55,9 @@
 					}
 					out.write("</table>");
 				}else if("groupregistration".equals(inputType)){
-					
+					out.write(request.getParameter("file"));
 				}
 			%>
-			<br/>
 	</body>
 	
 </html>

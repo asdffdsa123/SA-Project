@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<div style = 'float:left;'> 
-			<form method="post"> 
+			<form>
 				<input type = "text" name = "name" placeholder = "Vorname"/> <br/>
 				<input type = "text" name = "lastname" placeholder = "Nachname"/> <br/>
 				<input type = "date" name = "birthday" placeholder = "Geburtstag"/> <br/>
@@ -28,15 +28,13 @@
 			</form>	
 		</div>
 		<div style = 'float:left;'>
-			<form method="post" enctype="multipart/form-data">  
-				<input type = "file" name = "file"> Datei </input> <br/>
-				<input type = "hidden" name = "inputtype" value = "groupregistration"/>
+			<form>
+				<input type = "file"> Datei </input>
 				<button type = "submit">Gruppen Datei hochladen</button>
 			</form>
-		</div> <br/>
+		</div>
 			<%
-				String inputType = request.getParameter("inputtype");
-				if("registration".equals(inputType)){
+				if("registration".equals(request.getParameter("inputtype"))){
 					String firstname = request.getParameter("name");
 					String lastname = request.getParameter("lastname");
 					Date birthday = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthday"));
@@ -54,11 +52,9 @@
 						out.write("</tr>");
 					}
 					out.write("</table>");
-				}else if("groupregistration".equals(inputType)){
-					
 				}
+
 			%>
-			<br/>
 	</body>
 	
 </html>
