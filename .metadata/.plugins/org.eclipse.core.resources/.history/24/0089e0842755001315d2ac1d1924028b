@@ -17,7 +17,6 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -62,17 +61,6 @@ public class MainActivity extends Activity {
 			return;
 		} 
 
-	}
-	
-	public void setBusy(boolean b){
-		ProgressBar bar = (ProgressBar) findViewById(R.id.progressBar);
-		int v;
-		if(b){
-			v = View.VISIBLE;
-		}else{
-			v = View.INVISIBLE;
-		}
-		bar.setVisibility(v);
 	}
 	
 	private Registration parseRegistration() throws ParseException{

@@ -36,7 +36,6 @@ public class SaveTask extends AsyncTask<Object, Object, Exception>{
 
 	@Override
 	protected void onPostExecute(Exception result) {
-		activity.setBusy(false);
 		String text;
 		if(result != null){
 			text = "Fehler beim Verbinden mit dem Server: "+result.getMessage();

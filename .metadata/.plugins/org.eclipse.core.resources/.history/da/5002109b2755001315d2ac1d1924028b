@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
 
 	}
 	
-	public void setBusy(boolean b){
+	public void setLoading(boolean b){
 		ProgressBar bar = (ProgressBar) findViewById(R.id.progressBar);
 		int v;
 		if(b){

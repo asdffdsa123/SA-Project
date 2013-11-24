@@ -25,12 +25,13 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f080000;
-        public static final int action_settings=0x7f080009;
+        public static final int action_settings=0x7f08000a;
         public static final int birthday=0x7f080003;
         public static final int faculty_spinner=0x7f080007;
         public static final int firstname=0x7f080001;
         public static final int gender_spinner=0x7f080005;
         public static final int lastname=0x7f080002;
+        public static final int progressBar=0x7f080009;
         public static final int save_button=0x7f080008;
         public static final int textView1=0x7f080006;
         public static final int textView2=0x7f080004;
