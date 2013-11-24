@@ -8,6 +8,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Locale;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -32,7 +33,7 @@ public class RegistrationView extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	
-	private static final DateFormat FORMAT = SimpleDateFormat.getDateInstance();
+	private static final DateFormat FORMAT = SimpleDateFormat.getDateInstance(DateFormat.SHORT, Locale.GERMAN);
 	
 	private JTextField nameField;
 	private JTextField lastNameField;

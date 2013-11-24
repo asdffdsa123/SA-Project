@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import de.hswt.bp4553.swa.projekt.model.Fakulty;
 import de.hswt.bp4553.swa.projekt.model.Gender;
@@ -21,7 +22,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
-	private static final DateFormat FORMAT = SimpleDateFormat.getDateInstance();
+	private static final DateFormat FORMAT = SimpleDateFormat.getDateInstance(DateFormat.SHORT, Locale.GERMAN);
 	
 	private SocketClient client;
 
@@ -52,20 +53,16 @@ public class MainActivity extends Activity {
 	}
 	
 	public void save(View view){
-		Registration reg;
 		try {
-			reg = parseRegistration();
+			Registration reg = parseRegistration();
+			new SaveTask(this, reg, client).execute();
 		} catch (Exception e) {
 			Toast.makeText(this, "Fehler beim Einlesen: "+e.getMessage(), Toast.LENGTH_SHORT).show();
 			return;
 		} 
-		try {
-			client.register(reg);
-		} catch (IOException e) {
-			Toast.makeText(this, "Fehler beim Verbinden mit dem Server", Toast.LENGTH_SHORT).show();
-		}
-	}
 
+	}
+	
 	private Registration parseRegistration() throws ParseException{
 		return new Registration(s(R.id.firstname), s(R.id.lastname), FORMAT.parse(s(R.id.birthday)), 
 								Fakulty.values()[i(R.id.faculty_spinner)], Gender.values()[i(R.id.gender_spinner)]);
