@@ -11,9 +11,9 @@ public final class Registration
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String vorname;
-	private String nachname;
-	private Date geburtstag;
+	private String firstname;
+	private String lastname;
+	private Date birthday;
 	private Fakulty fakulty;
 	private Gender gender;
 
