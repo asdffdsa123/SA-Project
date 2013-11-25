@@ -10,6 +10,7 @@ import javax.swing.SwingUtilities;
 
 import com.google.common.base.Charsets;
 
+import de.hswt.bp4553.swa.projekt.client.model.RegistrationModel;
 import de.hswt.bp4553.swa.projekt.client.view.RegistrationView;
 import de.hswt.bp4553.swa.projekt.model.Registration;
 import de.hswt.bp4553.swa.projekt.rmi.RMIClient;
@@ -18,18 +19,21 @@ import de.hswt.bp4553.swa.projekt.socket.SocketClient;
 
 public class RegistrationController implements RegistrationHandler{
 	
-	private RegistrationView view;
+	private final RegistrationView view;
+	private final RegistrationModel model;
 	
 	public RegistrationController() {
 		super();
+		model = new RegistrationModel();
 		view = new RegistrationView(this);
+		model.addRegistrationObserver(view);
 		view.setVisible(true);
 	}
 	
 	private void registerWithSockets(Registration reg){
 		try{
 			SocketClient client = new SocketClient(ServerConfig.getInstance());
-			view.showRegistrations(client.register(reg));
+			model.setRegistrations(client.register(reg));
 		}catch(Exception e){
 			view.showError(e);
 		}
@@ -38,7 +42,7 @@ public class RegistrationController implements RegistrationHandler{
 	private void groupRegisterWithSockets(File file){
 	       try{
 	            SocketClient client = new SocketClient(ServerConfig.getInstance());
-	            view.showRegistrations(client.groupRegister(Files.readAllLines(file.toPath(), Charsets.UTF_8)));
+	            model.setRegistrations(client.groupRegister(Files.readAllLines(file.toPath(), Charsets.UTF_8)));
 	        }catch(Exception e){
 	            view.showError(e);
 	        }
@@ -47,7 +51,7 @@ public class RegistrationController implements RegistrationHandler{
 	private void registerWithRMI(Registration reg){
 	    try {
             RMIClient client = new RMIClient();
-            view.showRegistrations(client.register(reg));
+            model.setRegistrations(client.register(reg));
         }
         catch (MalformedURLException | RemoteException | NotBoundException e) {
             view.showError(e);
@@ -57,7 +61,7 @@ public class RegistrationController implements RegistrationHandler{
 	private void groupRegisterWithRMI(File file){
         try{
             RMIClient client = new RMIClient();
-            view.showRegistrations(client.groupRegister(Files.readAllLines(file.toPath(), Charsets.UTF_8)));
+            model.setRegistrations(client.groupRegister(Files.readAllLines(file.toPath(), Charsets.UTF_8)));
         }catch(Exception e){
             view.showError(e);
         }

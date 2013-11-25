@@ -24,11 +24,13 @@ import javax.swing.SwingUtilities;
 
 import de.hswt.bp4553.swa.projekt.client.controller.ConnectionType;
 import de.hswt.bp4553.swa.projekt.client.controller.RegistrationHandler;
+import de.hswt.bp4553.swa.projekt.client.model.Observer;
 import de.hswt.bp4553.swa.projekt.model.Fakulty;
 import de.hswt.bp4553.swa.projekt.model.Gender;
 import de.hswt.bp4553.swa.projekt.model.Registration;
 
-public class RegistrationView extends JFrame{
+public class RegistrationView extends JFrame
+	implements Observer<Collection<Registration>>{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -215,5 +217,10 @@ public class RegistrationView extends JFrame{
 	                }
 	            }
 	        });
+	}
+
+	@Override
+	public void changed(Collection<Registration> registrations) {
+		showRegistrations(registrations);
 	}
 }
