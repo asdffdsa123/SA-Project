@@ -1,17 +1,12 @@
 package de.hswt.bp4553.swa.projekt.server.persistence;
 
-public class RegistrationPersistenceFactory {
+import de.hswt.bp4553.swa.projekt.server.ServerConfig;
 
-    public enum RegistrationPersistenceType{
-        Java, JNI
-    }
-    
-    private static RegistrationPersistenceType type = RegistrationPersistenceType.Java;
-    
+public class RegistrationPersistenceFactory {
     private RegistrationPersistenceFactory(){}
     
     public static RegistrationPersistence getRegistrationPersistence(){
-        switch(type){
+        switch(ServerConfig.getInstance().getRegistrationPersistenceType()){
         case Java:
             return new JavaRegistrationPersistence();
         case JNI:
@@ -19,9 +14,5 @@ public class RegistrationPersistenceFactory {
         default:
             throw new RuntimeException("Not Implemented");
         }
-    }
-    
-    public static void setRegistrationPersistenceType(RegistrationPersistenceType type){
-        RegistrationPersistenceFactory.type = type;
     }
 }

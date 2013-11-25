@@ -54,4 +54,12 @@ public class ServerConfig {
         return prop.getProperty("rmi-service-name", "service");
     }
 
+	public RegistrationPersistenceType getRegistrationPersistenceType() {
+		String str = prop.getProperty("persistence");
+		if(str == null){
+			return RegistrationPersistenceType.Java;
+		}
+		return RegistrationPersistenceType.valueOf(str);
+	}
+
 }
