@@ -6,7 +6,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import de.hswt.bp4553.swa.projekt.rmi.RMIServer;
-import de.hswt.bp4553.swa.projekt.socket.ServerConfig;
 import de.hswt.bp4553.swa.projekt.socket.SocketServer;
 
 public class ServerMain {
@@ -14,7 +13,6 @@ public class ServerMain {
     private static final Logger log = Logger.getLogger(ServerMain.class.getName());
     
     public static void main(String[] args){
-    	ServerConfig prop = ServerConfig.getInstance();
     	new SocketServer().start();
     	try {
             new RMIServer();

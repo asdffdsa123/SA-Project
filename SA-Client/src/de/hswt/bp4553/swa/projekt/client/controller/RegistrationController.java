@@ -3,7 +3,6 @@ package de.hswt.bp4553.swa.projekt.client.controller;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 

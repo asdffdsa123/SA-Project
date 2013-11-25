@@ -1,28 +1,20 @@
 package de.hswt.bp4553.swa.projekt.socket;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.imageio.spi.RegisterableService;
-
 import com.google.common.base.Throwables;
 
 import de.hswt.bp4553.swa.projekt.model.Registration;
 import de.hswt.bp4553.swa.projekt.server.GroupRegistrationParser;
-import de.hswt.bp4553.swa.projekt.server.persistence.JavaRegistrationPersistence;
 import de.hswt.bp4553.swa.projekt.server.persistence.RegistrationPersistence;
 import de.hswt.bp4553.swa.projekt.server.persistence.RegistrationPersistenceFactory;
 

@@ -23,7 +23,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import de.hswt.bp4553.swa.projekt.client.controller.ConnectionType;
-import de.hswt.bp4553.swa.projekt.client.controller.RegistrationController;
 import de.hswt.bp4553.swa.projekt.client.controller.RegistrationHandler;
 import de.hswt.bp4553.swa.projekt.model.Fakulty;
 import de.hswt.bp4553.swa.projekt.model.Gender;
