@@ -47,7 +47,7 @@ public class RegistrationController implements RegistrationHandler{
 	private void registerWithRMI(Registration reg){
 	    try {
             RMIClient client = new RMIClient();
-            view.showRegistrations(client.insert(reg));
+            view.showRegistrations(client.register(reg));
         }
         catch (MalformedURLException | RemoteException | NotBoundException e) {
             view.showError(e);
@@ -57,7 +57,7 @@ public class RegistrationController implements RegistrationHandler{
 	private void groupRegisterWithRMI(File file){
         try{
             RMIClient client = new RMIClient();
-            view.showRegistrations(client.groupInsert(Files.readAllLines(file.toPath(), Charsets.UTF_8)));
+            view.showRegistrations(client.groupRegister(Files.readAllLines(file.toPath(), Charsets.UTF_8)));
         }catch(Exception e){
             view.showError(e);
         }

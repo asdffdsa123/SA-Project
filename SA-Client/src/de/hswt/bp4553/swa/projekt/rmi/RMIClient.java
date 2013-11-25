@@ -7,10 +7,11 @@ import java.rmi.RemoteException;
 import java.util.Collection;
 import java.util.List;
 
+import de.hswt.bp4553.swa.projekt.client.RegistrationRemoteClient;
 import de.hswt.bp4553.swa.projekt.model.Registration;
 import de.hswt.bp4553.swa.projekt.socket.ServerConfig;
 
-public class RMIClient {
+public class RMIClient implements RegistrationRemoteClient{
     
     private final RegistrationService regist;
     
@@ -19,11 +20,11 @@ public class RMIClient {
         regist = (RegistrationService) Naming.lookup(String.format("//%s:%d/%s", conf.getHost(), conf.getRMIPort(), conf.getRMIServiceName()));
     }
     
-    public Collection<Registration> insert(Registration reg) throws RemoteException{
+    public Collection<Registration> register(Registration reg) throws RemoteException{
         return regist.add(reg);
     }
     
-    public Collection<Registration> groupInsert(List<String> lines) throws RemoteException{
+    public Collection<Registration> groupRegister(List<String> lines) throws RemoteException{
         return regist.addGroup(lines);
     }
 

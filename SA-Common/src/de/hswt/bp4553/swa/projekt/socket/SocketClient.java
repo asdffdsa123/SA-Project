@@ -10,9 +10,10 @@ import java.util.List;
 
 import com.google.common.base.Throwables;
 
+import de.hswt.bp4553.swa.projekt.client.RegistrationRemoteClient;
 import de.hswt.bp4553.swa.projekt.model.Registration;
 
-public class SocketClient {
+public class SocketClient implements RegistrationRemoteClient{
 	
 	private final ServerConfig config;
 	
@@ -24,6 +25,7 @@ public class SocketClient {
 		this(ServerConfig.getInstance());
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public Collection<Registration> register(Registration reg) throws IOException{
 		Socket socket = null;
@@ -50,6 +52,7 @@ public class SocketClient {
 		}
 	}
 
+	@Override
     @SuppressWarnings("unchecked")
     public Collection<Registration> groupRegister(List<String> lines) throws IOException {
 		Socket socket = null;
