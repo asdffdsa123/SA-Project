@@ -17,12 +17,12 @@ public final class Registration
 	private Fakulty fakulty;
 	private Gender gender;
 
-	public Registration(String vorname, String nachname, Date geburtstag,
+	public Registration(String firstname, String lastname, Date birthday,
 			Fakulty fakulty, Gender gender) {
 		super();
-		setFirstname(vorname);
-		setLastname(nachname);
-		setBirthday(geburtstag);
+		setFirstname(firstname);
+		setLastname(lastname);
+		setBirthday(birthday);
 		setFakulty(fakulty);
 		setGender(gender);
 	}

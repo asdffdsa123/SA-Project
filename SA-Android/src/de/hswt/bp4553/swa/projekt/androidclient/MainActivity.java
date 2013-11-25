@@ -1,18 +1,12 @@
 package de.hswt.bp4553.swa.projekt.androidclient;
 
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-import de.hswt.bp4553.swa.projekt.model.Fakulty;
-import de.hswt.bp4553.swa.projekt.model.Gender;
-import de.hswt.bp4553.swa.projekt.model.Registration;
-import de.hswt.bp4553.swa.projekt.socket.ServerConfig;
-import de.hswt.bp4553.swa.projekt.socket.SocketClient;
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -20,6 +14,11 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
+import de.hswt.bp4553.swa.projekt.model.Fakulty;
+import de.hswt.bp4553.swa.projekt.model.Gender;
+import de.hswt.bp4553.swa.projekt.model.Registration;
+import de.hswt.bp4553.swa.projekt.socket.ServerConfig;
+import de.hswt.bp4553.swa.projekt.socket.SocketClient;
 
 public class MainActivity extends Activity {
 	
