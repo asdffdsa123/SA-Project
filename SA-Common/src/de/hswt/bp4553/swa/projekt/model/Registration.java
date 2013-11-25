@@ -20,23 +20,23 @@ public final class Registration
 	public Registration(String vorname, String nachname, Date geburtstag,
 			Fakulty fakulty, Gender gender) {
 		super();
-		setVorname(vorname);
-		setNachname(nachname);
-		setGeburtstag(geburtstag);
+		setFirstname(vorname);
+		setLastname(nachname);
+		setBirthday(geburtstag);
 		setFakulty(fakulty);
 		setGender(gender);
 	}
 
-	public String getVorname() {
-		return vorname;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public String getNachname() {
-		return nachname;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public Date getGeburtstag() {
-		return geburtstag;
+	public Date getBirthday() {
+		return birthday;
 	}
 
 	public Fakulty getFakulty() {
@@ -47,19 +47,19 @@ public final class Registration
 		return gender;
 	}
 
-	private void setVorname(String vorname) {
+	private void setFirstname(String vorname) {
 		checkArgument(!isNullOrEmpty(vorname));
-		this.vorname = vorname;
+		this.firstname = vorname;
 	}
 
-	private void setNachname(String nachname) {
+	private void setLastname(String nachname) {
 		checkArgument(!isNullOrEmpty(nachname));
-		this.nachname = nachname;
+		this.lastname = nachname;
 	}
 
-	private void setGeburtstag(Date geburtstag) {
+	private void setBirthday(Date geburtstag) {
 		checkNotNull(geburtstag);
-		this.geburtstag = geburtstag;
+		this.birthday = geburtstag;
 	}
 
 	private void setFakulty(Fakulty fakulty) {
@@ -74,8 +74,8 @@ public final class Registration
 
 	@Override
 	public String toString() {
-		return "Registration [vorname=" + vorname + ", nachname=" + nachname
-				+ ", geburtstag=" + geburtstag + ", fakultaet=" + fakulty
+		return "Registration [vorname=" + firstname + ", nachname=" + lastname
+				+ ", geburtstag=" + birthday + ", fakultaet=" + fakulty
 				+ ", gender=" + gender + "]";
 	}
 
