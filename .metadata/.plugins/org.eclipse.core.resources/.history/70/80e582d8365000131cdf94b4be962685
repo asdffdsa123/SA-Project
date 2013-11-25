@@ -1,9 +1,0 @@
-package de.hswt.bp4553.swa.projekt.client.controller;
-
-import java.io.File;
-
-public interface GroupAddHandler {
-	
-	void add(File file);
-
-}
