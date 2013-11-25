@@ -15,6 +15,10 @@ std::vector<std::string> split(const std::string &s, char delim) {
     return elems;
 }
 
+void throwIf(JNIEnv * env, bool b, const char* str){
+	env->
+}
+
 jstring callObjectGetter(JNIEnv * env, jobject thiz, const char* name){
     jclass clazz = env->FindClass("de.hswt.bp4553.swa.projekt.model.Registration");
     jmethodID meth = env->GetMethodID(clazz, name, "()java.lang.String;");
@@ -54,6 +58,8 @@ JNIEXPORT jobject JNICALL Java_de_hswt_bp4553_swa_projekt_server_persistence_JNI
     std::ifstream file;
     file.open(REG_FILE);
     jclass regClass = env->FindClass("de.hswt.bp4553.swa.projekt.model.Registration");
+    if(regClass == NULL){
+	}
     jclass dateClazz = env->FindClass("java.util.Date");
     jclass fakultyClazz = env->FindClass("de.hswt.bp4553.swa.projekt.model.Fakulty");
     jclass genderClazz = env->FindClass("de.hswt.bp4553.swa.projekt.model.Gender");
