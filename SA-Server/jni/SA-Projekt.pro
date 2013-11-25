@@ -8,6 +8,7 @@ QT       -= core gui
 
 TARGET = SA-Projekt
 TEMPLATE = lib
+INCLUDEPATH += /usr/lib/jvm/java-7-openjdk-i386/include/
 
 DEFINES += SAPROJEKT_LIBRARY
 
@@ -16,3 +17,4 @@ SOURCES += \
 
 HEADERS += \
     de_hswt_bp4553_swa_projekt_server_persistence_JNIRegistrationPersistence.h
+
