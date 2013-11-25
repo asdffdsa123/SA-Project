@@ -1,4 +1,4 @@
-package de.hswt.bp4553.swa.projekt.rmi;
+package de.hswt.bp4553.swa.projekt.client.rmi;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

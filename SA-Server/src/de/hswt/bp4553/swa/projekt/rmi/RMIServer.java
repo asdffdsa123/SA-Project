@@ -13,11 +13,12 @@ import java.util.logging.Logger;
 
 import com.google.common.base.Throwables;
 
+import de.hswt.bp4553.swa.projekt.client.rmi.RegistrationService;
 import de.hswt.bp4553.swa.projekt.model.Registration;
 import de.hswt.bp4553.swa.projekt.server.GroupRegistrationParser;
+import de.hswt.bp4553.swa.projekt.server.ServerConfig;
 import de.hswt.bp4553.swa.projekt.server.persistence.RegistrationPersistence;
 import de.hswt.bp4553.swa.projekt.server.persistence.RegistrationPersistenceFactory;
-import de.hswt.bp4553.swa.projekt.socket.ServerConfig;
 
 public class RMIServer extends UnicastRemoteObject
     implements RegistrationService{

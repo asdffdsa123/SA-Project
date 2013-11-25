@@ -8,8 +8,9 @@ import java.util.Collection;
 import java.util.List;
 
 import de.hswt.bp4553.swa.projekt.client.RegistrationRemoteClient;
+import de.hswt.bp4553.swa.projekt.client.rmi.RegistrationService;
 import de.hswt.bp4553.swa.projekt.model.Registration;
-import de.hswt.bp4553.swa.projekt.socket.ServerConfig;
+import de.hswt.bp4553.swa.projekt.server.ServerConfig;
 
 public class RMIClient implements RegistrationRemoteClient{
     

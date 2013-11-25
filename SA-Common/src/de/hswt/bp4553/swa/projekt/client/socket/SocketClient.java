@@ -1,4 +1,4 @@
-package de.hswt.bp4553.swa.projekt.socket;
+package de.hswt.bp4553.swa.projekt.client.socket;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -12,6 +12,7 @@ import com.google.common.base.Throwables;
 
 import de.hswt.bp4553.swa.projekt.client.RegistrationRemoteClient;
 import de.hswt.bp4553.swa.projekt.model.Registration;
+import de.hswt.bp4553.swa.projekt.server.ServerConfig;
 
 public class SocketClient implements RegistrationRemoteClient{
 	

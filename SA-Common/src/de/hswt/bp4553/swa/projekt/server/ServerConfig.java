@@ -1,4 +1,4 @@
-package de.hswt.bp4553.swa.projekt.socket;
+package de.hswt.bp4553.swa.projekt.server;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

@@ -11,11 +11,11 @@ import javax.swing.SwingUtilities;
 import com.google.common.base.Charsets;
 
 import de.hswt.bp4553.swa.projekt.client.model.RegistrationModel;
+import de.hswt.bp4553.swa.projekt.client.socket.SocketClient;
 import de.hswt.bp4553.swa.projekt.client.view.RegistrationView;
 import de.hswt.bp4553.swa.projekt.model.Registration;
 import de.hswt.bp4553.swa.projekt.rmi.RMIClient;
-import de.hswt.bp4553.swa.projekt.socket.ServerConfig;
-import de.hswt.bp4553.swa.projekt.socket.SocketClient;
+import de.hswt.bp4553.swa.projekt.server.ServerConfig;
 
 public class RegistrationController implements RegistrationHandler{
 	

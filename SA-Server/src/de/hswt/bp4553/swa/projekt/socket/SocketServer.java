@@ -15,6 +15,7 @@ import com.google.common.base.Throwables;
 
 import de.hswt.bp4553.swa.projekt.model.Registration;
 import de.hswt.bp4553.swa.projekt.server.GroupRegistrationParser;
+import de.hswt.bp4553.swa.projekt.server.ServerConfig;
 import de.hswt.bp4553.swa.projekt.server.persistence.RegistrationPersistence;
 import de.hswt.bp4553.swa.projekt.server.persistence.RegistrationPersistenceFactory;
 
