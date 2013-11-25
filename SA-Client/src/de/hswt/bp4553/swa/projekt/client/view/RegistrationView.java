@@ -33,8 +33,6 @@ public class RegistrationView extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	
-	private static final DateFormat FORMAT = SimpleDateFormat.getDateInstance(DateFormat.SHORT, Locale.GERMAN);
-	
 	private JTextField nameField;
 	private JTextField lastNameField;
 	private JTextField birthdayField;
@@ -173,12 +171,13 @@ public class RegistrationView extends JFrame{
 	}
 	
 	private Registration parseRegistration() throws ParseException{
+		DateFormat format = SimpleDateFormat.getDateInstance(DateFormat.SHORT, Locale.GERMAN);
 		Gender gen = Gender.values()[genderBox.getSelectedIndex()];
 		Fakulty fak = Fakulty.values()[fakBox.getSelectedIndex()];
 		return new Registration(
 				nameField.getText(), 
 				lastNameField.getText(), 
-				FORMAT.parse(birthdayField.getText()), 
+				format.parse(birthdayField.getText()), 
 				fak, gen);
 	}
 
