@@ -56,7 +56,7 @@ public class RegistrationView extends JFrame
 		this.getContentPane().add(rightPanel(), BorderLayout.EAST);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.pack();
-		this.setSize(400, 400);
+		this.setSize(700, 400);
 		this.handler = handler;
 	}
 	
@@ -193,17 +193,23 @@ public class RegistrationView extends JFrame
 		
 	}
 	
-	public void setBusy(boolean busy){
-	    if(busy){
-	        if(busyDialog == null){
-	            busyDialog = new BusyDialog(this);
-	        }
-	    }else{
-	        if(busyDialog != null){
-	            busyDialog.dispose();
-	            busyDialog = null;
-	        }
-	    }
+	public void setBusy(final boolean busy){
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+			    if(busy){
+			        if(busyDialog == null){
+			            busyDialog = new BusyDialog(RegistrationView.this);
+			        }
+			    }else{
+			        if(busyDialog != null){
+			            busyDialog.dispose();
+			            busyDialog = null;
+			        }
+			    }				
+			}
+		});
 	}
 
 	public void showRegistrations(final Collection<Registration> register) {

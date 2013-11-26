@@ -6,16 +6,14 @@ import java.nio.file.Files;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import javax.swing.SwingUtilities;
-
 import com.google.common.base.Charsets;
 
+import de.hswt.bp4553.swa.projekt.client.RegistrationRemoteClient;
 import de.hswt.bp4553.swa.projekt.client.model.RegistrationModel;
 import de.hswt.bp4553.swa.projekt.client.socket.SocketClient;
 import de.hswt.bp4553.swa.projekt.client.view.RegistrationView;
 import de.hswt.bp4553.swa.projekt.model.Registration;
 import de.hswt.bp4553.swa.projekt.rmi.RMIClient;
-import de.hswt.bp4553.swa.projekt.server.ServerConfig;
 
 public class RegistrationController implements RegistrationHandler{
 	
@@ -30,58 +28,46 @@ public class RegistrationController implements RegistrationHandler{
 		view.setVisible(true);
 	}
 	
-	private void registerWithSockets(Registration reg){
-		try{
-			SocketClient client = new SocketClient(ServerConfig.getInstance());
-			model.setRegistrations(client.register(reg));
-		}catch(Exception e){
-			view.showError(e);
-		}
-	}
-	
-	private void groupRegisterWithSockets(File file){
+	private void groupRegister(File file, RegistrationRemoteClient client){
 	       try{
-	            SocketClient client = new SocketClient(ServerConfig.getInstance());
 	            model.setRegistrations(client.groupRegister(Files.readAllLines(file.toPath(), Charsets.UTF_8)));
 	        }catch(Exception e){
 	            view.showError(e);
 	        }
 	}
 	
-	private void registerWithRMI(Registration reg){
+	private void register(Registration reg, RegistrationRemoteClient client){
 	    try {
-            RMIClient client = new RMIClient();
             model.setRegistrations(client.register(reg));
         }
-        catch (MalformedURLException | RemoteException | NotBoundException e) {
+        catch (Exception e) {
             view.showError(e);
         }
 	}
 	
-	private void groupRegisterWithRMI(File file){
-        try{
-            RMIClient client = new RMIClient();
-            model.setRegistrations(client.groupRegister(Files.readAllLines(file.toPath(), Charsets.UTF_8)));
-        }catch(Exception e){
-            view.showError(e);
-        }
+	private RegistrationRemoteClient getClient(ConnectionType type) throws MalformedURLException, RemoteException, NotBoundException{
+		switch(type){
+		case Socket:
+			return new SocketClient();
+		case rmi:
+			return new RMIClient();
+		default:
+			throw new RuntimeException("Not Implemented");
+		}
 	}
 
 	public void addRegistrationPressed(final Registration reg, final ConnectionType type) {
+		view.setBusy(true);
 	    new Thread(new Runnable() {
             
             @Override
             public void run() {
-                switch(type){
-                case Socket:
-                    registerWithSockets(reg);
-                    break;
-                case rmi:
-                    registerWithRMI(reg);
-                    break;
-                default:
-                    throw new RuntimeException("Not Implemented");
-                }                
+            	try {
+					register(reg, getClient(type));
+				} catch (Exception e) {
+					view.showError(e);
+				}  
+            	view.setBusy(false);
             }
         }).start();
 	}
@@ -92,23 +78,12 @@ public class RegistrationController implements RegistrationHandler{
             
             @Override
             public void run() {
-                switch(type){
-                case Socket:
-                    groupRegisterWithSockets(selectedFile);
-                    break;
-                case rmi:
-                    groupRegisterWithRMI(selectedFile);
-                    break;
-                default:
-                    throw new RuntimeException("Not Implemented");
-                }           
-                SwingUtilities.invokeLater(new Runnable() {
-                    
-                    @Override
-                    public void run() {
-                        view.setBusy(false);
-                    }
-                });
+            	try {
+					groupRegister(selectedFile, getClient(type));
+				} catch (Exception e) {
+					view.showError(e);
+				} 
+                view.setBusy(false);
             }
         }).start();
     }
