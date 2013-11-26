@@ -80,6 +80,32 @@ public class SocketClient implements RegistrationRemoteClient{
 			}
 		}
     }
+	
+	@SuppressWarnings("unchecked")
+	public Collection<Registration> getAll() throws IOException{
+		Socket socket = null;
+		ObjectOutputStream out = null;
+		ObjectInputStream in = null;
+		try{
+			socket = openSocket();
+			out = new ObjectOutputStream(socket.getOutputStream());
+			in = new ObjectInputStream(socket.getInputStream());
+            out.writeObject("getAll");
+            Collection<Registration> registrations = (Collection<Registration>) in.readObject();
+            String resp = (String) in.readObject();
+            if(!"Ok".equals(resp)){
+                throw new RuntimeException("Server response: " + resp);
+            }
+            return registrations;
+        }
+        catch (ClassNotFoundException e) {
+            throw Throwables.propagate(e);
+        }finally{
+			if(socket != null){
+				socket.close();
+			}
+		}
+	}
     
     private Socket openSocket() throws UnknownHostException, IOException{
         return new Socket(config.getHost(), config.getSocketPort());

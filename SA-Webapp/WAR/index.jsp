@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<%@ page import="de.hswt.bp4553.swa.projekt.model.*" %>
-		<%@ page import="de.hswt.bp4553.swa.projekt.socket.*" %>
+		<%@ page import="de.hswt.bp4553.swa.projekt.client.socket.*" %>
 		<%@ page import="java.util.*" %>
 		<%@ page import="java.text.*" %>
 		<meta charset="utf-8">
@@ -35,6 +35,7 @@
 			</form>
 		</div> <br/>
 			<%
+				SocketClient client = new SocketClient();
 				String inputType = request.getParameter("inputtype");
 				if("registration".equals(inputType)){
 					String firstname = request.getParameter("name");
@@ -43,20 +44,20 @@
 					Fakulty fakulty = Fakulty.valueOf(request.getParameter("fakulty"));
 					Gender gender = Gender.valueOf(request.getParameter("gender"));
 					Registration toInsert = new Registration(firstname, lastname, birthday, fakulty, gender);
-					SocketClient client = new SocketClient(ServerConfig.getInstance());
-					Collection<Registration> regs = client.register(toInsert);
-					out.write("<table border='0'>");
-					for(Registration reg : regs){
-						out.write("<tr>");
-						out.write("<td>");
-						out.write(reg.toString());
-						out.write("</td>");
-						out.write("</tr>");
-					}
-					out.write("</table>");
+					client.register(toInsert);
 				}else if("groupregistration".equals(inputType)){
 					
 				}
+				Collection<Registration> regs = client.getAll();
+				out.write("<table border='0'>");
+				for(Registration reg : regs){
+					out.write("<tr>");
+					out.write("<td>");
+					out.write(reg.toString());
+					out.write("</td>");
+					out.write("</tr>");
+				}
+				out.write("</table>");
 			%>
 			<br/>
 	</body>

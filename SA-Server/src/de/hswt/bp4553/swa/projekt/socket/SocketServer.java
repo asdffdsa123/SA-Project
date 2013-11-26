@@ -65,15 +65,15 @@ public class SocketServer extends Thread{
 			if(type.equals("register")){
 				Registration reg = (Registration) in.readObject();
 				registrationPersistence.insert(reg);
-				out.writeObject(registrationPersistence.getAll());
-				out.writeObject("Ok");
+				writeEnd(registrationPersistence, out);
 			}else if(type.equals("registerGroup")){
 				Collection<Registration> regs = GroupRegistrationParser.parse((List<String>) in.readObject());
 				for(Registration r : regs){
 				    registrationPersistence.insert(r);
 				}
-				out.writeObject(registrationPersistence.getAll());
-				out.writeObject("Ok");
+				writeEnd(registrationPersistence, out);
+			}else if(type.equals("getAll")){
+				writeEnd(registrationPersistence, out);
 			}else{
 				out.writeObject("invalid request");
 			}
@@ -82,6 +82,9 @@ public class SocketServer extends Thread{
 		}
 	}
 	
-
+	private void writeEnd(RegistrationPersistence registrationPersistence, ObjectOutputStream out) throws IOException{
+		out.writeObject(registrationPersistence.getAll());
+		out.writeObject("Ok");
+	}
 
 }
