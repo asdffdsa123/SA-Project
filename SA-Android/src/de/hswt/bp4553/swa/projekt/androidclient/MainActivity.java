@@ -14,11 +14,11 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
+import de.hswt.bp4553.swa.projekt.client.socket.SocketClient;
 import de.hswt.bp4553.swa.projekt.model.Fakulty;
 import de.hswt.bp4553.swa.projekt.model.Gender;
 import de.hswt.bp4553.swa.projekt.model.Registration;
-import de.hswt.bp4553.swa.projekt.socket.ServerConfig;
-import de.hswt.bp4553.swa.projekt.socket.SocketClient;
+import de.hswt.bp4553.swa.projekt.server.ServerConfig;
 
 public class MainActivity extends Activity {
 	

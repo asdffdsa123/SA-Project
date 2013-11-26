@@ -4,8 +4,8 @@ import java.io.IOException;
 
 import android.os.AsyncTask;
 import android.widget.Toast;
+import de.hswt.bp4553.swa.projekt.client.socket.SocketClient;
 import de.hswt.bp4553.swa.projekt.model.Registration;
-import de.hswt.bp4553.swa.projekt.socket.SocketClient;
 
 public class SaveTask extends AsyncTask<Object, Object, Exception>{
 	
