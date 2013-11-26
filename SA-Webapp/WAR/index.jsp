@@ -34,6 +34,11 @@
 				<button type = "submit">Gruppen Datei hochladen</button>
 			</form>
 		</div> <br/>
+			<%!
+				String tdWrap(String str){
+					return String.format("<td>%s</td>", str);
+				}
+			%>
 			<%
 				SocketClient client = new SocketClient();
 				String inputType = request.getParameter("inputtype");
@@ -45,16 +50,16 @@
 					Gender gender = Gender.valueOf(request.getParameter("gender"));
 					Registration toInsert = new Registration(firstname, lastname, birthday, fakulty, gender);
 					client.register(toInsert);
-				}else if("groupregistration".equals(inputType)){
-					
 				}
 				Collection<Registration> regs = client.getAll();
 				out.write("<table border='0'>");
 				for(Registration reg : regs){
 					out.write("<tr>");
-					out.write("<td>");
-					out.write(reg.toString());
-					out.write("</td>");
+					out.write(tdWrap(reg.getFirstname());
+					out.write(tdWrap(reg.getLastname());
+					out.write(tdWrap(SimpleDateFormat.getDateFormat().format(reg.getBirthday()));
+					out.write(tdWrap(reg.getFakulty().name()));
+					out.write(tdWrap(reg.getGender().name()));
 					out.write("</tr>");
 				}
 				out.write("</table>");
