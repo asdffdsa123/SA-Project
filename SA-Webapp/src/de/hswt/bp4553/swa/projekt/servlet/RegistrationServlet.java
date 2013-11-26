@@ -52,16 +52,12 @@ public class RegistrationServlet extends HttpServlet{
 	    resp.sendRedirect("/");
 	}
 	
-	private void handleFileUpload(InputStream in){
+	private void handleFileUpload(InputStream in) throws IOException{
 		try(Scanner sc = new Scanner(in, ENCODING)){
 			List<String> lines = new ArrayList<>();
 			lines.add(sc.nextLine());
 			RegistrationRemoteClient client = new SocketClient();
-			try {
-				client.groupRegister(lines);
-			} catch (IOException e) {
-				log.log(Level.SEVERE, "Couldn't connect to server", e);
-			}
+			client.groupRegister(lines);
 		}
 	}
 	
