@@ -2,6 +2,7 @@ package de.hswt.bp4553.swa.projekt.client.view;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
@@ -201,6 +202,10 @@ public class RegistrationView extends JFrame
 			    if(busy){
 			        if(busyDialog == null){
 			            busyDialog = new BusyDialog(RegistrationView.this);
+			            Point center = getLocationOnScreen();
+			            center.x += getWidth() / 2;
+			            center.y += getHeight() / 2;
+			            busyDialog.setLocation(center);
 			        }
 			    }else{
 			        if(busyDialog != null){
