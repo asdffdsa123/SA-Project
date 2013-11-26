@@ -1,3 +1,4 @@
+
 <html>
 	<head>
 		<%@ page import="de.hswt.bp4553.swa.projekt.model.*" %>
@@ -8,37 +9,51 @@
 		<title>Wettkampf Registrierung</title>
 	</head>
 	<body>
-		<div style = 'float:left;'> 
-			<form method="post"> 
-				<input type = "text" name = "name" placeholder = "Vorname"/> <br/>
-				<input type = "text" name = "lastname" placeholder = "Nachname"/> <br/>
-				<input type = "date" name = "birthday" placeholder = "Geburtstag"/> <br/>
-				<select name="fakulty" size="3">
-				<%
-					Fakulty[] fs = Fakulty.values();
-					for(int i = 0; i < fs.length; i++){
-						out.write(String.format("<option>%s</option>", fs[i].name()));
-					}
-				%>
-			    </select> <br/>
-			    <input type = "radio" name = "gender" value = "Mann"> Mann </input>
-			    <input type = "radio" name = "gender" value = "Frau"> Frau </input> <br/>
-			    <input type = "hidden" name = "inputtype" value = "registration"/>
-				<button type="submit">Anmelden</button>
-			</form>	
+		<h1> Wettkampf Registrierung </h1>
+		<div>
+				<h2> Einzelanmeldung </h2>
+				<form method="post"> 
+					<input type = "text" name = "name" placeholder = "Vorname"/> <br/>
+					<input type = "text" name = "lastname" placeholder = "Nachname"/> <br/>
+					<input type = "date" name = "birthday" placeholder = "Geburtstag"/> <br/>
+					<select name="fakulty" size="3">
+					<%
+						Fakulty[] fs = Fakulty.values();
+						for(int i = 0; i < fs.length; i++){
+							out.write(String.format("<option>%s</option>", fs[i].name()));
+						}
+					%>
+				    </select> <br/>
+				    <input type = "radio" name = "gender" value = "Mann"> Mann </input>
+				    <input type = "radio" name = "gender" value = "Frau"> Frau </input> <br/>
+				    <input type = "hidden" name = "inputtype" value = "registration"/>
+					<button type="submit">Anmelden</button>
+				</form>	
+				<br/>
+				<h2> Gruppenanmeldung </h2>
+				<form method="post" action= "register" enctype="multipart/form-data">  
+					<input type = "file" name = "file"></input> <br/>
+					<input type = "hidden" name = "inputtype" value = "groupregistration"/>
+					<button type = "submit">Hochladen</button>
+				</form>
 		</div>
-		<div style = 'float:left;'>
-			<form method="post" action= "register" enctype="multipart/form-data">  
-				<input type = "file" name = "file"> Datei </input> <br/>
-				<input type = "hidden" name = "inputtype" value = "groupregistration"/>
-				<button type = "submit">Gruppen Datei hochladen</button>
-			</form>
-		</div> <br/>
 			<%!
 				String tdWrap(String str){
 					return String.format("<td>%s</td>", str);
 				}
 			%>
+			<br/>
+			<h2> Anmeldungen </h2>
+			<table border='0'>
+				<thead>
+					<tr>
+						<th> Vorname </th>
+						<th> Nachname </th>
+						<th> Geburtstag </th>
+						<th> Fakultaet </th>
+						<th> Geschlecht </th>
+					</tr>
+				</thead>
 			<%
 				SocketClient client = new SocketClient();
 				String inputType = request.getParameter("inputtype");
@@ -52,19 +67,17 @@
 					client.register(toInsert);
 				}
 				Collection<Registration> regs = client.getAll();
-				out.write("<table border='0'>");
 				for(Registration reg : regs){
 					out.write("<tr>");
-					out.write(tdWrap(reg.getFirstname());
-					out.write(tdWrap(reg.getLastname());
-					out.write(tdWrap(SimpleDateFormat.getDateFormat().format(reg.getBirthday()));
+					out.write(tdWrap(reg.getFirstname()));
+					out.write(tdWrap(reg.getLastname()));
+					out.write(tdWrap(SimpleDateFormat.getDateInstance().format(reg.getBirthday())));
 					out.write(tdWrap(reg.getFakulty().name()));
 					out.write(tdWrap(reg.getGender().name()));
 					out.write("</tr>");
 				}
-				out.write("</table>");
 			%>
-			<br/>
+			</table> <br/>
 	</body>
 	
 </html>

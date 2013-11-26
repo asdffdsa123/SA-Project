@@ -49,7 +49,7 @@ public class RegistrationServlet extends HttpServlet{
 	    } catch (FileUploadException e) {
 	        throw new ServletException("Cannot parse multipart request.", e);
 	    }
-	    resp.sendRedirect("/");
+	    resp.sendRedirect("/bp4553");
 	}
 	
 	private void handleFileUpload(InputStream in) throws IOException{
