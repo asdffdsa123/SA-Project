@@ -2,3 +2,4 @@
 */bin/
 SA-Server/jni/SA-Projekt.pro.user
 *.log
+SA-Server/registrations.bin
