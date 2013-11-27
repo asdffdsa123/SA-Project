@@ -44,7 +44,7 @@
 			%>
 			<br/>
 			<h2> Anmeldungen </h2>
-			<table border='0'>
+			<table style = 'background-color:#ACAAFC;border: 1px solid black;'>
 				<thead>
 					<tr>
 						<th> Vorname </th>
@@ -67,14 +67,22 @@
 					client.register(toInsert);
 				}
 				Collection<Registration> regs = client.getAll();
+				boolean color = true;
 				for(Registration reg : regs){
-					out.write("<tr>");
+					out.write("<tr style = 'background-color:");
+					if(color){
+						out.write("#DCDEFC");
+					}else{
+						out.write("#FFFFFF");
+					}
+					out.write(";'>");
 					out.write(tdWrap(reg.getFirstname()));
 					out.write(tdWrap(reg.getLastname()));
 					out.write(tdWrap(SimpleDateFormat.getDateInstance().format(reg.getBirthday())));
 					out.write(tdWrap(reg.getFakulty().name()));
 					out.write(tdWrap(reg.getGender().name()));
 					out.write("</tr>");
+					color = !color;
 				}
 			%>
 			</table> <br/>
