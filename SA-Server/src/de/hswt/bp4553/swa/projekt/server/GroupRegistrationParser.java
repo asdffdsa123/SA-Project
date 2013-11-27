@@ -17,7 +17,7 @@ public class GroupRegistrationParser {
     	DateFormat format = SimpleDateFormat.getDateInstance();
         Collection<Registration> result = new ArrayList<>();
         for(String line : lines){
-            String[] tokens = line.split("\\s");
+            String[] tokens = line.split("\\s+");
             Registration reg = new Registration(
                     tokens[0], 
                     tokens[1], 
