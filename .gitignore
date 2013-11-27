@@ -4,7 +4,8 @@
 SA-Server/jni/SA-Projekt.pro.user
 *.log
 SA-Server/registrations.bin
-SA-Server/c_registrations.csv
+SA-Server/c_registrations.bin
 *.o
 Makefile
 SA-Server/jni/*.so*
+.directory
