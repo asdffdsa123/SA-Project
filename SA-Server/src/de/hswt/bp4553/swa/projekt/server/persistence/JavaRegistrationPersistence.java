@@ -32,7 +32,6 @@ public class JavaRegistrationPersistence implements RegistrationPersistence {
 	@Override
     @SuppressWarnings("unchecked")
 	public synchronized Collection<Registration> getAll() throws IOException{
-	    delay();
 		if(!REGISTRATIONS_FILE.exists()){
 			return new ArrayList<>();
 		}
@@ -52,15 +51,5 @@ public class JavaRegistrationPersistence implements RegistrationPersistence {
 		regs.add(reg);
 		writeAll(regs);
 		log.info("Registration added: "+reg);
-	}
-	
-	private static void delay(){
-	       try {
-	            Thread.sleep(2000);
-	        }
-	        catch (InterruptedException e) {
-	            // TODO Auto-generated catch block
-	            e.printStackTrace();
-	        }
 	}
 }

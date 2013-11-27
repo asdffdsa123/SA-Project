@@ -46,6 +46,8 @@ public class RMIServer extends UnicastRemoteObject
 
     @Override
     public Collection<Registration> add(Registration reg) throws RemoteException {
+		//Delay every request to simulate hard work
+		delay();
         RegistrationPersistence pers = RegistrationPersistenceFactory.getRegistrationPersistence();
         try {
             pers.insert(reg);
@@ -58,6 +60,8 @@ public class RMIServer extends UnicastRemoteObject
 
     @Override
     public Collection<Registration> addGroup(List<String> lines) throws RemoteException {
+		//Delay every request to simulate hard work
+		delay();
         RegistrationPersistence pers = RegistrationPersistenceFactory.getRegistrationPersistence();
         try {
             for(Registration r : GroupRegistrationParser.parse(lines)){
@@ -70,4 +74,14 @@ public class RMIServer extends UnicastRemoteObject
         }
         
     }
+    
+	private static void delay(){
+	       try {
+	            Thread.sleep(2000);
+	        }
+	        catch (InterruptedException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+	}
 }

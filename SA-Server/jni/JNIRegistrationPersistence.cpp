@@ -39,8 +39,6 @@ JNIEXPORT jobject JNICALL Java_de_hswt_bp4553_swa_projekt_server_persistence_JNI
     file.seekg(0, std::ifstream::end);
     int size = file.tellg();
     file.seekg(0, std::ifstream::beg);
-    printf("%d\r\n", size);
-    fflush(stdout);
     jbyteArray byteArray = env->NewByteArray(size);
     jbyte* bytes = env->GetByteArrayElements(byteArray, 0);
     file.read((char *)bytes, size);

@@ -58,6 +58,8 @@ public class SocketServer extends Thread{
 	
 	@SuppressWarnings("unchecked")
     private void handleClient(Socket socket) throws IOException, ParseException{
+		//Delay every request to simulate hard work
+		delay();
 	    RegistrationPersistence registrationPersistence = RegistrationPersistenceFactory.getRegistrationPersistence();
 		try(ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 				ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream())){
@@ -87,4 +89,14 @@ public class SocketServer extends Thread{
 		out.writeObject("Ok");
 	}
 
+	
+	private static void delay(){
+	       try {
+	            Thread.sleep(2000);
+	        }
+	        catch (InterruptedException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+	}
 }
