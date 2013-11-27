@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
@@ -53,7 +54,7 @@ public class RegistrationView extends JFrame
 	
 	public RegistrationView(RegistrationHandler handler){
 		this.setLayout(new BorderLayout());
-		this.getContentPane().add(regisList(), BorderLayout.CENTER);
+		this.getContentPane().add(leftPanel(), BorderLayout.CENTER);
 		this.getContentPane().add(rightPanel(), BorderLayout.EAST);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.pack();
@@ -66,6 +67,12 @@ public class RegistrationView extends JFrame
 		panel.setLayout(new BorderLayout());
 		panel.add(registPanel(), BorderLayout.NORTH);
 		panel.add(new JPanel(), BorderLayout.CENTER);
+		return panel;
+	}
+	
+	private JScrollPane leftPanel(){
+		JScrollPane panel = new JScrollPane();
+		panel.setViewportView(regisList());
 		return panel;
 	}
 	
