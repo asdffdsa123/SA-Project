@@ -50,7 +50,9 @@ public class RegistrationServlet extends HttpServlet{
 	private void handleFileUpload(InputStream in) throws IOException{
 		try(Scanner sc = new Scanner(in, ENCODING)){
 			List<String> lines = new ArrayList<>();
-			lines.add(sc.nextLine());
+			while(sc.hasNextLine()){
+				lines.add(sc.nextLine());
+			}
 			RegistrationRemoteClient client = new SocketClient();
 			client.groupRegister(lines);
 		}
