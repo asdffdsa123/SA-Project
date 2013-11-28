@@ -19,6 +19,12 @@ import de.hswt.bp4553.swa.projekt.server.ServerConfig;
 import de.hswt.bp4553.swa.projekt.server.persistence.RegistrationPersistence;
 import de.hswt.bp4553.swa.projekt.server.persistence.RegistrationPersistenceFactory;
 
+/**
+ * Das Serverseitige gegenstück von SocketClient. 
+ * Nimmt Anfragen von den Clients entgegen, und kommuniziert mit der Persistenzschicht.
+ * @author bp4553
+ *
+ */
 public class SocketServer extends Thread{
 
 	private static final Logger log = Logger.getLogger(SocketServer.class.getName());

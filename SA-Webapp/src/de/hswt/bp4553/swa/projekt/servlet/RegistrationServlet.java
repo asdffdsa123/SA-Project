@@ -21,7 +21,15 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import de.hswt.bp4553.swa.projekt.client.RegistrationRemoteClient;
 import de.hswt.bp4553.swa.projekt.client.socket.SocketClient;
 
+/**
+ * Dieses Servlet verarbeitet Uploads.
+ * @author bp4553
+ *
+ */
 public class RegistrationServlet extends HttpServlet{
+	
+	private static final String ROOT = "/bp4553";
+	private static final String FILE_FIELD_NAME = "file";
 	
 	private static final String ENCODING = StandardCharsets.UTF_8.name();
 	
@@ -35,7 +43,7 @@ public class RegistrationServlet extends HttpServlet{
 	    try {
 	        List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
 	        for (FileItem item : items) {
-	        	if("file".equals(item.getFieldName())){
+	        	if(FILE_FIELD_NAME.equals(item.getFieldName())){
 	        		handleFileUpload(item.getInputStream());
 	        	}else{
 	        		log.warning("Field ignored: " + item.getFieldName());
@@ -44,7 +52,7 @@ public class RegistrationServlet extends HttpServlet{
 	    } catch (FileUploadException e) {
 	        throw new ServletException("Cannot parse multipart request.", e);
 	    }
-	    resp.sendRedirect("/bp4553");
+	    resp.sendRedirect(ROOT);
 	}
 	
 	private void handleFileUpload(InputStream in) throws IOException{

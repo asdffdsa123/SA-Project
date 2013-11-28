@@ -13,6 +13,12 @@ import de.hswt.bp4553.swa.projekt.model.Registration;
 
 public class GroupRegistrationParser {
 
+	/**
+	 * Parst eine CSV Datei im Format "Vorname, Nachname, Geburtstag (zb 22.11.1980), Fakultaet (zb BB), Geschlecht (zb Mann)"
+	 * @param lines Die Zeilen der CSV Datei
+	 * @return
+	 * @throws ParseException Wenn die Datei nicht im richtigen Format ist
+	 */
     public static Collection<Registration> parse(List<String> lines) throws ParseException{
     	DateFormat format = SimpleDateFormat.getDateInstance();
         Collection<Registration> result = new ArrayList<>();

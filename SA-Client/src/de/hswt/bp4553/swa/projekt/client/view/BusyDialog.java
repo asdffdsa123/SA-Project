@@ -9,12 +9,21 @@ import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
+/**
+ * Dieser Dialog wird angezeigt, wenn der Client gerade mit dem Server kommuniziert.
+ * @author bp4553
+ *
+ */
 public class BusyDialog extends JDialog{
     
     private static final URL LOADING_ANIMATION = BusyDialog.class.getResource("loading_circle_gray.gif");
 
     private static final long serialVersionUID = 1L;
     
+    /**
+     * Erzeugt den Dialog und zeigt ihn an.
+     * @param owner
+     */
     public BusyDialog(Frame owner) {
         super(owner);
         this.setLayout(new BorderLayout());

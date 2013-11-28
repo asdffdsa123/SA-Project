@@ -5,6 +5,11 @@ import java.util.Date;
 import static com.google.common.base.Preconditions.*;
 import static com.google.common.base.Strings.*;
 
+/**
+ * Stellt die Registierung einer Person bei einem Wettkampf dar.
+ * @author bp4553
+ *
+ */
 public final class Registration 
 	implements Serializable
 {

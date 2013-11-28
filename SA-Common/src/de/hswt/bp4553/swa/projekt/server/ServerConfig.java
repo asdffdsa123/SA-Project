@@ -7,6 +7,13 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Laed die Konfiguration des Servers, und stellt standard werte bereit.
+ * Diese Config wird auch von den Clients verwendet, um Adressen, Port, usw zu erhalten.
+ * Diesen Objekt ist ein Singleton.
+ * @author bp4553
+ *
+ */
 public class ServerConfig {
 	
 	private static final Logger log = Logger.getLogger(ServerConfig.class.getName());
@@ -34,32 +41,52 @@ public class ServerConfig {
 		}
 	}
 	
+	/**
+	 * Der Port auf dem der SocketServer hört.
+	 * @return
+	 */
 	public int getSocketPort(){
 		return Integer.parseInt(prop.getProperty("socket-port", "36552"));
 	}
 	
+	/**
+	 * Der Port auf dem der RMI Server hört.
+	 * @return
+	 */
 	public int getRMIPort(){
 	    return Integer.parseInt(prop.getProperty("rmi-port", "55223"));
 	}
 	
+	/**
+	 * Die Adresse des Servers.
+	 * @return
+	 */
 	public String getHost(){
 		return prop.getProperty("address", "localhost");
 	}
-	
-	public static ServerConfig getInstance(){
-		return INST;
-	}
 
+	/**
+	 * Der name des RMI Services.
+	 * @return
+	 */
     public String getRMIServiceName() {
         return prop.getProperty("rmi-service-name", "service");
     }
 
+    /**
+     * Die Persistenzmethode die der Server verwendet.
+     * @return
+     */
 	public RegistrationPersistenceType getRegistrationPersistenceType() {
 		String str = prop.getProperty("persistence");
 		if(str == null){
 			return RegistrationPersistenceType.Java;
 		}
 		return RegistrationPersistenceType.valueOf(str);
+	}
+	
+	public static ServerConfig getInstance(){
+		return INST;
 	}
 
 }
