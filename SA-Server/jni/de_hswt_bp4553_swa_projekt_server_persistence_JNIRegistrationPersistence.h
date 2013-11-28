@@ -10,18 +10,18 @@ extern "C" {
 /*
  * Class:     de_hswt_bp4553_swa_projekt_server_persistence_JNIRegistrationPersistence
  * Method:    getAll
- * Signature: ()Ljava/util/Collection;
+ * Signature: (Ljava/lang/String;)Ljava/util/Collection;
  */
 JNIEXPORT jobject JNICALL Java_de_hswt_bp4553_swa_projekt_server_persistence_JNIRegistrationPersistence_getAll
-  (JNIEnv *, jobject);
+  (JNIEnv *, jobject, jstring);
 
 /*
  * Class:     de_hswt_bp4553_swa_projekt_server_persistence_JNIRegistrationPersistence
  * Method:    insert
- * Signature: (Lde/hswt/bp4553/swa/projekt/model/Registration;)V
+ * Signature: (Lde/hswt/bp4553/swa/projekt/model/Registration;Ljava/lang/String;)V
  */
 JNIEXPORT void JNICALL Java_de_hswt_bp4553_swa_projekt_server_persistence_JNIRegistrationPersistence_insert
-  (JNIEnv *, jobject, jobject);
+  (JNIEnv *, jobject, jobject, jstring);
 
 #ifdef __cplusplus
 }

@@ -3,8 +3,6 @@
 #include <vector>
 #include <sstream>
 
-#define REG_FILE "c_registrations.bin"
-
 jbyteArray serialize(JNIEnv * env, jobject obj){
     jclass objStreamClass = env->FindClass("java/io/ObjectOutputStream");
     jclass byteStreamClass = env->FindClass("java/io/ByteArrayOutputStream");
@@ -22,16 +20,25 @@ jobject deserialize(JNIEnv * env, jbyteArray byteArray){
     jobject objStream = env->NewObject(objStreamClass, env->GetMethodID(objStreamClass, "<init>", "(Ljava/io/InputStream;)V"), bytestream);
     return env->CallObjectMethod(objStream, env->GetMethodID(objStreamClass, "readObject", "()Ljava/lang/Object;"));
 }
-void write(JNIEnv * env, jobject collection){
-    std::ofstream file(REG_FILE, std::ios::binary | std::ios::out | std::ios::trunc);
+void write(JNIEnv * env, jobject collection, jstring filename){
+    const char* cfileName = env->GetStringUTFChars(filename, 0);
+    std::ofstream file(cfileName, std::ios::binary | std::ios::out | std::ios::trunc);
+    env->ReleaseStringUTFChars(filename, cfileName);
     jbyteArray bytearray = serialize(env, collection);
     jbyte* bytes = env->GetByteArrayElements(bytearray, 0);
     file.write((const char*)bytes, env->GetArrayLength(bytearray));
     env->ReleaseByteArrayElements(bytearray, bytes, 0);
 }
 
-JNIEXPORT jobject JNICALL Java_de_hswt_bp4553_swa_projekt_server_persistence_JNIRegistrationPersistence_getAll(JNIEnv * env, jobject thiz){
-    std::ifstream file(REG_FILE, std::ios::binary);
+/*
+ * Class:     de_hswt_bp4553_swa_projekt_server_persistence_JNIRegistrationPersistence
+ * Method:    getAll
+ * Signature: (Ljava/lang/String;)Ljava/util/Collection;
+ */
+JNIEXPORT jobject JNICALL Java_de_hswt_bp4553_swa_projekt_server_persistence_JNIRegistrationPersistence_getAll(JNIEnv * env, jobject thiz, jstring filename){
+    const char* cfileName = env->GetStringUTFChars(filename, 0);
+    std::ifstream file(cfileName, std::ios::binary);
+    env->ReleaseStringUTFChars(filename, cfileName);
     if(!file){
         jclass arrayListClass = env->FindClass("java/util/ArrayList");
         return env->NewObject(arrayListClass, env->GetMethodID(arrayListClass, "<init>", "()V"));
@@ -46,9 +53,14 @@ JNIEXPORT jobject JNICALL Java_de_hswt_bp4553_swa_projekt_server_persistence_JNI
     return deserialize(env, byteArray);
 }
 
-JNIEXPORT void JNICALL Java_de_hswt_bp4553_swa_projekt_server_persistence_JNIRegistrationPersistence_insert(JNIEnv * env, jobject thiz, jobject registration) {
-    jobject collection = Java_de_hswt_bp4553_swa_projekt_server_persistence_JNIRegistrationPersistence_getAll(env, thiz);
+/*
+ * Class:     de_hswt_bp4553_swa_projekt_server_persistence_JNIRegistrationPersistence
+ * Method:    insert
+ * Signature: (Lde/hswt/bp4553/swa/projekt/model/Registration;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_de_hswt_bp4553_swa_projekt_server_persistence_JNIRegistrationPersistence_insert(JNIEnv * env, jobject thiz, jobject registration, jstring filename) {
+    jobject collection = Java_de_hswt_bp4553_swa_projekt_server_persistence_JNIRegistrationPersistence_getAll(env, thiz, filename);
     jclass collectionClass = env->FindClass("java/util/Collection");
     env->CallBooleanMethod(collection, env->GetMethodID(collectionClass, "add", "(Ljava/lang/Object;)Z"), registration);
-    write(env, collection);
+    write(env, collection, filename);
 }
