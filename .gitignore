@@ -9,3 +9,4 @@ SA-Server/c_registrations.bin
 Makefile
 SA-Server/jni/*.so*
 .directory
+.class
