@@ -14,6 +14,11 @@ import com.google.common.base.Throwables;
 
 import de.hswt.bp4553.swa.projekt.model.Registration;
 
+/**
+ * Implementiert das RegistrationPersistence interface mithilfe von Java Serialisierung.
+ * @author bp4553
+ *
+ */
 public class JavaRegistrationPersistence implements RegistrationPersistence {
     
     private static final Logger log = Logger.getLogger(JavaRegistrationPersistence.class.getName());
@@ -25,10 +30,7 @@ public class JavaRegistrationPersistence implements RegistrationPersistence {
 			fout.writeObject(regs);
 		}
 	}
-	
-	/* (non-Javadoc)
-     * @see de.hswt.bp4553.swa.projekt.server.persistence.RegistrationPersistence#getAll()
-     */
+
 	@Override
     @SuppressWarnings("unchecked")
 	public synchronized Collection<Registration> getAll() throws IOException{
@@ -41,10 +43,7 @@ public class JavaRegistrationPersistence implements RegistrationPersistence {
 			throw Throwables.propagate(e);
 		}
 	}
-	
-	/* (non-Javadoc)
-     * @see de.hswt.bp4553.swa.projekt.server.persistence.RegistrationPersistence#insert(de.hswt.bp4553.swa.projekt.model.Registration)
-     */
+
 	@Override
     public synchronized void insert(Registration reg) throws IOException{
 		Collection<Registration> regs = getAll();

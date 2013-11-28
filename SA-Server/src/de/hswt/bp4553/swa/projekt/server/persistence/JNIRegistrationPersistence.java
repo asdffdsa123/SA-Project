@@ -6,6 +6,11 @@ import java.util.Collection;
 
 import de.hswt.bp4553.swa.projekt.model.Registration;
 
+/**
+ * Deklariert die Methoden von RegistrationPersistence als native, und laedt die c++ shared library.
+ * @author bp4553
+ *
+ */
 public class JNIRegistrationPersistence implements RegistrationPersistence{
 	
 	static{
