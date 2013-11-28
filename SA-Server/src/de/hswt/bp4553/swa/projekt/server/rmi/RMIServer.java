@@ -1,4 +1,4 @@
-package de.hswt.bp4553.swa.projekt.rmi;
+package de.hswt.bp4553.swa.projekt.server.rmi;
 
 import java.io.IOException;
 import java.net.MalformedURLException;

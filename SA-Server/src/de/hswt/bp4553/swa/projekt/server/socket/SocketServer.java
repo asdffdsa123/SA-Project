@@ -1,4 +1,4 @@
-package de.hswt.bp4553.swa.projekt.socket;
+package de.hswt.bp4553.swa.projekt.server.socket;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

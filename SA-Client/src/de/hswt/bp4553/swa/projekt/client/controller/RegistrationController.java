@@ -10,10 +10,10 @@ import com.google.common.base.Charsets;
 
 import de.hswt.bp4553.swa.projekt.client.RegistrationRemoteClient;
 import de.hswt.bp4553.swa.projekt.client.model.RegistrationModel;
+import de.hswt.bp4553.swa.projekt.client.rmi.RMIClient;
 import de.hswt.bp4553.swa.projekt.client.socket.SocketClient;
 import de.hswt.bp4553.swa.projekt.client.view.RegistrationView;
 import de.hswt.bp4553.swa.projekt.model.Registration;
-import de.hswt.bp4553.swa.projekt.rmi.RMIClient;
 
 /**
  * Der Controller des MVC patterns.

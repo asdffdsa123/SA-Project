@@ -5,8 +5,8 @@ import java.rmi.RemoteException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import de.hswt.bp4553.swa.projekt.rmi.RMIServer;
-import de.hswt.bp4553.swa.projekt.socket.SocketServer;
+import de.hswt.bp4553.swa.projekt.server.rmi.RMIServer;
+import de.hswt.bp4553.swa.projekt.server.socket.SocketServer;
 
 public class ServerMain {
     

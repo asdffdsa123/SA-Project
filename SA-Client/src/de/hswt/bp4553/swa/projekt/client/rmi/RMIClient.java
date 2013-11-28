@@ -1,4 +1,4 @@
-package de.hswt.bp4553.swa.projekt.rmi;
+package de.hswt.bp4553.swa.projekt.client.rmi;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;

@@ -1,4 +1,4 @@
-package de.hswt.bp4553.swa.projekt;
+package de.hswt.bp4553.swa.projekt.client;
 
 import de.hswt.bp4553.swa.projekt.client.controller.RegistrationController;
 
