@@ -1,0 +1,14 @@
+de.hswt.bp4553.swa.projekt
+de.hswt.bp4553.swa.projekt.androidclient
+de.hswt.bp4553.swa.projekt.client
+de.hswt.bp4553.swa.projekt.client.controller
+de.hswt.bp4553.swa.projekt.client.model
+de.hswt.bp4553.swa.projekt.client.rmi
+de.hswt.bp4553.swa.projekt.client.socket
+de.hswt.bp4553.swa.projekt.client.view
+de.hswt.bp4553.swa.projekt.model
+de.hswt.bp4553.swa.projekt.rmi
+de.hswt.bp4553.swa.projekt.server
+de.hswt.bp4553.swa.projekt.server.persistence
+de.hswt.bp4553.swa.projekt.servlet
+de.hswt.bp4553.swa.projekt.socket
