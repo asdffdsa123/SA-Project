@@ -8,8 +8,6 @@ import java.net.UnknownHostException;
 import java.util.Collection;
 import java.util.List;
 
-import com.google.common.base.Throwables;
-
 import de.hswt.bp4553.swa.projekt.client.RegistrationRemoteClient;
 import de.hswt.bp4553.swa.projekt.model.Registration;
 import de.hswt.bp4553.swa.projekt.server.ServerConfig;
@@ -50,7 +48,7 @@ public class SocketClient implements RegistrationRemoteClient{
 			}
 			return registrations;
 		}catch (ClassNotFoundException e1) {
-			throw Throwables.propagate(e1);
+			throw new RuntimeException("ClassNotFound", e1);
 		}finally{
 			if(socket != null){
 				socket.close();
@@ -78,7 +76,7 @@ public class SocketClient implements RegistrationRemoteClient{
             return registrations;
         }
         catch (ClassNotFoundException e) {
-            throw Throwables.propagate(e);
+        	throw new RuntimeException("ClassNotFound", e);
         }finally{
 			if(socket != null){
 				socket.close();
@@ -109,7 +107,7 @@ public class SocketClient implements RegistrationRemoteClient{
             return registrations;
         }
         catch (ClassNotFoundException e) {
-            throw Throwables.propagate(e);
+            throw new RuntimeException("ClassNotFound", e);
         }finally{
 			if(socket != null){
 				socket.close();
