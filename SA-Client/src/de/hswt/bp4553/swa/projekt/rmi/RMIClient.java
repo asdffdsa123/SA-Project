@@ -27,11 +27,11 @@ public class RMIClient implements RegistrationRemoteClient{
     }
     
     public Collection<Registration> register(Registration reg) throws RemoteException{
-        return regist.add(reg);
+        return regist.anmelden(reg);
     }
     
     public Collection<Registration> groupRegister(List<String> lines) throws RemoteException{
-        return regist.addGroup(lines);
+        return regist.anmelden(lines);
     }
 
 }

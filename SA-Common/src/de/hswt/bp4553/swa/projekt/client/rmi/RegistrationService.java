@@ -20,7 +20,7 @@ public interface RegistrationService extends Remote{
 	 * @return
 	 * @throws RemoteException
 	 */
-	public Collection<Registration> add(Registration reg) throws RemoteException;
+	public Collection<Registration> anmelden(Registration reg) throws RemoteException;
 	
 	/**
 	 * Registriert eine Guppe beim Server. Es wird eine CSV übergeben in der die Personen zeilenweise aufgelistet sind.
@@ -28,6 +28,6 @@ public interface RegistrationService extends Remote{
 	 * @return
 	 * @throws RemoteException
 	 */
-	public Collection<Registration> addGroup(List<String> lines) throws RemoteException;
+	public Collection<Registration> anmelden(List<String> lines) throws RemoteException;
 
 }

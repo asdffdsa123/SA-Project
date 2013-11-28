@@ -50,7 +50,7 @@ public class RMIServer extends UnicastRemoteObject
     }
 
     @Override
-    public Collection<Registration> add(Registration reg) throws RemoteException {
+    public Collection<Registration> anmelden(Registration reg) throws RemoteException {
 		//Delay every request to simulate hard work
 		delay();
         RegistrationPersistence pers = RegistrationPersistenceFactory.getRegistrationPersistence();
@@ -64,7 +64,7 @@ public class RMIServer extends UnicastRemoteObject
     }
 
     @Override
-    public Collection<Registration> addGroup(List<String> lines) throws RemoteException {
+    public Collection<Registration> anmelden(List<String> lines) throws RemoteException {
 		//Delay every request to simulate hard work
 		delay();
         RegistrationPersistence pers = RegistrationPersistenceFactory.getRegistrationPersistence();
