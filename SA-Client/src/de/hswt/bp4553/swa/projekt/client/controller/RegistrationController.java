@@ -64,12 +64,7 @@ public class RegistrationController implements RegistrationHandler{
 		}
 	}
 
-	/**
-	 * 
-	 * @param reg
-	 * @param type
-	 */
-	public void addRegistrationPressed(final Registration reg, final ConnectionType type) {
+	private void addRegistrationPressed(final Registration reg, final ConnectionType type) {
 		view.setBusy(true);
 	    new Thread(new Runnable() {
             
@@ -85,7 +80,7 @@ public class RegistrationController implements RegistrationHandler{
         }).start();
 	}
 
-    public void addGroupPressed(final File selectedFile, final ConnectionType type) {
+    private void addGroupPressed(final File selectedFile, final ConnectionType type) {
         view.setBusy(true);
         new Thread(new Runnable() {
             

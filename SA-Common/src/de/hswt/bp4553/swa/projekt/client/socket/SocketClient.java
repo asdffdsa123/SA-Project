@@ -14,6 +14,11 @@ import de.hswt.bp4553.swa.projekt.client.RegistrationRemoteClient;
 import de.hswt.bp4553.swa.projekt.model.Registration;
 import de.hswt.bp4553.swa.projekt.server.ServerConfig;
 
+/**
+ * Dieser Client implementiert das RegistrationRemoteClient interface mithilfe von Sockets.
+ * @author bp4553
+ *
+ */
 public class SocketClient implements RegistrationRemoteClient{
 	
 	private final ServerConfig config;
@@ -81,6 +86,11 @@ public class SocketClient implements RegistrationRemoteClient{
 		}
     }
 	
+	/**
+	 * Fragt alle Registrierten Personen vom Server ab.
+	 * @return
+	 * @throws IOException
+	 */
 	@SuppressWarnings("unchecked")
 	public Collection<Registration> getAll() throws IOException{
 		Socket socket = null;

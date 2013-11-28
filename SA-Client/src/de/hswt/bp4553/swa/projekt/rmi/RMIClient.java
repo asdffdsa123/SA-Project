@@ -12,6 +12,11 @@ import de.hswt.bp4553.swa.projekt.client.rmi.RegistrationService;
 import de.hswt.bp4553.swa.projekt.model.Registration;
 import de.hswt.bp4553.swa.projekt.server.ServerConfig;
 
+/**
+ * Implementiert das RegistrationRemoteClient interface mit RMI Aufrufen.
+ * @author bp4553
+ *
+ */
 public class RMIClient implements RegistrationRemoteClient{
     
     private final RegistrationService regist;

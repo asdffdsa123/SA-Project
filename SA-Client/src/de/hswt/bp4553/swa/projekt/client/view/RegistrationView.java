@@ -31,6 +31,11 @@ import de.hswt.bp4553.swa.projekt.model.Fakulty;
 import de.hswt.bp4553.swa.projekt.model.Gender;
 import de.hswt.bp4553.swa.projekt.model.Registration;
 
+/**
+ * Die View des MVC patterns.
+ * @author bp4553
+ *
+ */
 public class RegistrationView extends JFrame
 	implements Observer<Collection<Registration>>{
 
@@ -129,6 +134,10 @@ public class RegistrationView extends JFrame
 	    return groupAddButton;
 	}
 
+	/**
+	 * Gibt zurück welche Kommunikationsart ausgewählt wurde.
+	 * @return
+	 */
 	public ConnectionType getSelectedConnectionType(){
 		return ConnectionType.values()[conTypeBox.getSelectedIndex()];
 	}
@@ -190,6 +199,10 @@ public class RegistrationView extends JFrame
 				fak, gen);
 	}
 
+	/**
+	 * Zeigt ein Popup an das den Fehler darstellt.
+	 * @param e
+	 */
 	public void showError(final Exception e) {
 	    SwingUtilities.invokeLater(new Runnable() {
             
@@ -201,6 +214,10 @@ public class RegistrationView extends JFrame
 		
 	}
 	
+	/**
+	 * Zeigt den BusyDialog an oder versteckt ihn.
+	 * @param busy
+	 */
 	public void setBusy(final boolean busy){
 		SwingUtilities.invokeLater(new Runnable() {
 			
@@ -224,7 +241,7 @@ public class RegistrationView extends JFrame
 		});
 	}
 
-	public void showRegistrations(final Collection<Registration> register) {
+	private void showRegistrations(final Collection<Registration> register) {
 	       SwingUtilities.invokeLater(new Runnable() {
 	            
 	            @Override
