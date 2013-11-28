@@ -20,6 +20,11 @@ import de.hswt.bp4553.swa.projekt.server.ServerConfig;
 import de.hswt.bp4553.swa.projekt.server.persistence.RegistrationPersistence;
 import de.hswt.bp4553.swa.projekt.server.persistence.RegistrationPersistenceFactory;
 
+/**
+ * Implementiert den RegistrationService, und stellt das interface für RMI Clients bereit.
+ * @author bp4553
+ *
+ */
 public class RMIServer extends UnicastRemoteObject
     implements RegistrationService{
 
