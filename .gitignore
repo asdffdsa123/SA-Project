@@ -10,3 +10,4 @@ Makefile
 SA-Server/jni/*.so*
 .directory
 .class
+SA-Webapp/WAR/WEB-INF/classes
