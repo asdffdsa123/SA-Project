@@ -20,6 +20,11 @@ import de.hswt.bp4553.swa.projekt.model.Gender;
 import de.hswt.bp4553.swa.projekt.model.Registration;
 import de.hswt.bp4553.swa.projekt.server.ServerConfig;
 
+/**
+ * Die GUI des Clients, mit welcher eine Registrierung eingegeben werden kann.
+ * @author bp4553
+ *
+ */
 public class MainActivity extends Activity {
 	
 	private static final DateFormat FORMAT = SimpleDateFormat.getDateInstance(DateFormat.SHORT, Locale.GERMAN);
@@ -44,14 +49,12 @@ public class MainActivity extends Activity {
 		}
 		return new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, strs);
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
 	
+	/**
+	 * Startet den Speichervorgang der Registierung.
+	 * Wird vom Speichern Button aufgerufen.
+	 * @param view
+	 */
 	public void save(View view){
 		try {
 			Registration reg = parseRegistration();
@@ -63,6 +66,10 @@ public class MainActivity extends Activity {
 
 	}
 	
+	/**
+	 * Zeigt Progressbar an oder versteckt sie.
+	 * @param b
+	 */
 	public void setBusy(boolean b){
 		ProgressBar bar = (ProgressBar) findViewById(R.id.progressBar);
 		int v;
@@ -74,6 +81,11 @@ public class MainActivity extends Activity {
 		bar.setVisibility(v);
 	}
 	
+	/**
+	 * Erzeugt aus den eingegenen Daten ein Registration objekt.
+	 * @return
+	 * @throws ParseException
+	 */
 	private Registration parseRegistration() throws ParseException{
 		return new Registration(s(R.id.firstname), s(R.id.lastname), FORMAT.parse(s(R.id.birthday)), 
 								Fakulty.values()[i(R.id.faculty_spinner)], Gender.values()[i(R.id.gender_spinner)]);
