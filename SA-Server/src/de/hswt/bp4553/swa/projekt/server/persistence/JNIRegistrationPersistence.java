@@ -12,12 +12,14 @@ import de.hswt.bp4553.swa.projekt.model.Registration;
  *
  */
 public class JNIRegistrationPersistence implements RegistrationPersistence{
+	
+	private static final String NATIVE_LIB_NAME = "libSA-Projekt.so";
 
 	static{
-		System.load(new File("libSA-Projekt.so").getAbsolutePath());
+		System.load(new File(NATIVE_LIB_NAME).getAbsolutePath());
 	}
 	
-	//The filename should be passed from Java code
+	//Die Datei in die gespeichert werden soll wird von Java nach cpp uebergeben,
 	private final String filename;
 
     public JNIRegistrationPersistence(String filename) {
